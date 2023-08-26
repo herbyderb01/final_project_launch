@@ -1,0 +1,33 @@
+from setuptools import setup
+import os
+from glob import glob
+
+package_name = 'assignments'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=[package_name],
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'rviz'), glob('rviz/*.rviz')),
+        (os.path.join('share', package_name, 'meshes'), glob('meshes/*.STL')),
+        (os.path.join('share', package_name, 'urdf'), glob('urdf/*.urdf'))
+    ],
+    install_requires=['setuptools', 'shapely'],
+    zip_safe=True,
+    maintainer='greg',
+    maintainer_email='greg.droge@usu.edu',
+    description='Package for launching the py_sim scenarios for 5345 assignments',
+    license='TODO: License declaration',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'transforms = assignments.tools.transforms:main',
+            '03_single = assignments.03_pysim_ros_single:main',
+        ],
+    },
+)
