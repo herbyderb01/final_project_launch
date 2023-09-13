@@ -20,21 +20,10 @@ class RosPySim(Node):
 
         # Create callback groups (needed for try 3 and 4)
         self.cb_annoying = MutuallyExclusiveCallbackGroup()
-        self.cb_dyn = MutuallyExclusiveCallbackGroup()  # Delete to start
-        self.cb_sense = MutuallyExclusiveCallbackGroup()
-        self.cb_plot = MutuallyExclusiveCallbackGroup()
 
         # Create a timer for the annoying slepper (Given as an example)
         self.annoying_timer = self.create_timer(timer_period_sec=5., callback=self.example_timer, callback_group=self.cb_annoying)
 
-        # Create a timer for the sensing  # Delete to start
-        self.sensing_timer = self.create_timer(sim.params.sim_step, self.run_sensing, callback_group=self.cb_sense)
-
-        # Create a timer for the dynamics # Delete to start
-        self.dynamics_timer = self.create_timer(sim.params.sim_step, self.run_dynamics, callback_group=self.cb_dyn)
-
-        # Create a timer for the plotting (Comment out for try 4) # Delete to start
-        self.plotting_timer = self.create_timer(sim.params.sim_plot_period, self.run_plotting, callback_group=self.cb_plot)
 
     def example_timer(self) -> None:
         """Runs a callback that just delays things to show an example
