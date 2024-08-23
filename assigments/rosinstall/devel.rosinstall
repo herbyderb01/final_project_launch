@@ -1,11 +1,14 @@
 # To use http to download the code, replace "git@gitlab.com:" with "https://gitlab.com/"
 # e.g.,
-#   git@gitlab.com:utahstate/courses/5345-intro-to-ros/py_sim_launch.git becomes
-#   https://gitlab.com/utahstate/courses/5345-intro-to-ros/py_sim_launch.git
+#     git@gitlab.com:utahstate/courses/5345-intro-to-ros/py_sim_launch.git becomes
+#     https://gitlab.com/utahstate/courses/5345-intro-to-ros/py_sim_launch.git
 
-- git: {local-name: py_sim,
-        uri: 'git@gitlab.com:utahstate/droge-robotics/simple-robot-sim/python-robot-sim.git',
-        version: main}
-- git: {local-name: py_sim_launch,
-        uri: 'git@gitlab.com:utahstate/courses/5345-intro-to-ros/py-sim-launch-soln.git',
-        version: mod_11}
+repositories:
+  py_sim:
+    type: git
+    url: git@gitlab.com:utahstate/droge-robotics/simple-robot-sim/python-robot-sim.git
+    version: main
+  py_sim_launch:
+    type: git
+    url: git@gitlab.com:utahstate/courses/5345-intro-to-ros/py-sim-launch-soln.git
+    version: mod_11

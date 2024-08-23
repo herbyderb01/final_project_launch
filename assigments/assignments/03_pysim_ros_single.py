@@ -18,12 +18,11 @@ class RosPySim(Node):
         super().__init__(node_name="RosPySim")
         self.sim = sim
 
-        # Create callback groups (needed for try 3 and 4)
+        # Create callback groups
         self.cb_annoying = MutuallyExclusiveCallbackGroup()
 
         # Create a timer for the annoying slepper (Given as an example)
         self.annoying_timer = self.create_timer(timer_period_sec=5., callback=self.example_timer, callback_group=self.cb_annoying)
-
 
     def example_timer(self) -> None:
         """Runs a callback that just delays things to show an example

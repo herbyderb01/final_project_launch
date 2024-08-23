@@ -1,14 +1,11 @@
 """create_sim.py creates a navigation simulation
 """
-from typing import List
-
-
 import numpy as np
 import py_sim.dynamics.unicycle as uni
 from py_sim.path_planning.path_generation import create_path
 from py_sim.plotting.plot_constructor import create_plot_manifest
 from py_sim.sensors.range_bearing import RangeBearingSensor
-from py_sim.sim.generic_sim import SimParameters, start_simple_sim
+from py_sim.sim.generic_sim import SimParameters
 from py_sim.sim.sim_modes import NavVectorFollower
 from py_sim.tools.projections import LineCarrot
 from py_sim.tools.sim_types import TwoDimArray, UnicycleControl, UnicycleState
@@ -89,4 +86,3 @@ def create_sim(create_initial_plan: bool = True) -> NavSim:
                             carrot=carrot
                          )
     return sim
-
