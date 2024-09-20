@@ -1,12 +1,13 @@
 """ 00_pysim_ros.py: Provides an example of using ROS to run the main functions of the navigation sim
 """
-
+import threading
 import rclpy
 from rclpy.node import Node
 import matplotlib.pyplot as plt
 import time as pytime
 import copy
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
+from rclpy.executors import MultiThreadedExecutor
 from assignments.tools.create_sim import NavSim, create_sim
 
 
@@ -28,7 +29,7 @@ class RosPySim(Node):
         self.annoying_timer = self.create_timer(timer_period_sec=5., callback=self.example_timer, callback_group=self.cb_annoying)
         self.sensing_timer = self.create_timer(timer_period_sec=sim.params.sim_step, callback=self.run_sensing, callback_group=self.cb_sensing)
         self.dynamics_timer = self.create_timer(timer_period_sec=sim.params.sim_step, callback=self.run_dynamics, callback_group=self.cb_dynamics)
-        self.plotting_timer = self.create_timer(timer_period_sec=sim.params.sim_plot_period, callback=self.run_plotting, callback_group=self.cb_plotting)
+        # self.plotting_timer = self.create_timer(timer_period_sec=sim.params.sim_plot_period, callback=self.run_plotting, callback_group=self.cb_plotting)
 
     def example_timer(self) -> None:
         """Runs a callback that just delays things to show an example
@@ -65,16 +66,28 @@ class RosPySim(Node):
 
 
 def main(args=None):
-    # Initialize ros
-    rclpy.init(args=args)
+	# Initialize ros
+	rclpy.init(args=args)
 
-    # Create the sim
-    sim = create_sim()
-    plt.show(block=False)
+	# Create the sim
+	sim = create_sim()
+	plt.show(block=False)
 
-    # Create and spin node
-    node = RosPySim(sim=sim)
-    rclpy.spin(node)
+	# Create and spin node
+	node = RosPySim(sim=sim)
+	# rclpy.spin(node)
+	exec = MultiThreadedExecutor()
+	exec.add_node(node)
+	# exec.spin()
+	ros_thread = threading.Thread(target=exec.spin, daemon=True)
+	ros_thread.start()
+    
+	rate = node.create_rate(frequency=1/sim.params.sim_plot_period)
+	while rclpy.ok():
+		node.sim.update_plot()
+		rate.sleep()
+    
+	node.ros_thread.join()
 
 
 if __name__ == '__main__':

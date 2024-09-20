@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import time as pytime
 import copy
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
+from rclpy.executors import MultiThreadedExecutor
 from assignments.tools.create_sim import NavSim, create_sim
 
 
@@ -74,7 +75,10 @@ def main(args=None):
 
     # Create and spin node
     node = RosPySim(sim=sim)
-    rclpy.spin(node)
+    # rclpy.spin(node)
+    exec = MultiThreadedExecutor()
+    exec.add_node(node)
+    exec.spin()
 
 
 if __name__ == '__main__':

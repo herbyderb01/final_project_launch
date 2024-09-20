@@ -6,7 +6,7 @@ package_name = 'assignments'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.0.1',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -19,15 +19,17 @@ setup(
     ],
     install_requires=['setuptools', 'shapely'],
     zip_safe=True,
-    maintainer='greg',
-    maintainer_email='greg.droge@usu.edu',
-    description='Package for launching the py_sim scenarios for 5345 assignments',
+    maintainer='Nate',
+    maintainer_email='A02307138@aggies.usu.edu',
+    description='Nates module 3 code completion',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'transforms = assignments.tools.transforms:main',
             '03_single = assignments.03_pysim_ros_single:main',
+            '03_broken = assignments.03_pysim_ros_broken:main',
+            '03_multi = assignments.03_pysim_ros_multi:main',
         ],
     },
 )
