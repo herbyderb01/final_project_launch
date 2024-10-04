@@ -21,7 +21,7 @@ setup(
     zip_safe=True,
     maintainer='Nate',
     maintainer_email='A02307138@aggies.usu.edu',
-    description='Nates module 3 code completion',
+    description='Nates module 5 code completion',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
@@ -30,6 +30,7 @@ setup(
             '03_single = assignments.03_pysim_ros_single:main',
             '03_broken = assignments.03_pysim_ros_broken:main',
             '03_multi = assignments.03_pysim_ros_multi:main',
+            '05_pub_pose = assignments.05_pysim_pose_pub:main',
         ],
     },
 )
