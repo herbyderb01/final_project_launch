@@ -31,6 +31,8 @@ setup(
             '03_broken = assignments.03_pysim_ros_broken:main',
             '03_multi = assignments.03_pysim_ros_multi:main',
             '05_pub_pose = assignments.05_pysim_pose_pub:main',
+            '06_pub_pose = assignments.06_pysim_pose_pub:main',
+            '06_pub_sensor = assignments.06_pysim_sensor_pub:main',
         ],
     },
 )
