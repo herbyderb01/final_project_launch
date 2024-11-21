@@ -35,6 +35,7 @@ setup(
             '06_pub_sensor = assignments.06_pysim_sensor_pub:main',
             '09_planning_service = assignments.09_planning_service:main',
             '09_pub_pose = assignments.09_pysim_pose_pub:main',
+            '11_clock = assignments.11_clock_node:main',
         ],
     },
 )
