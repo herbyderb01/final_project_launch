@@ -14,7 +14,7 @@ def generate_launch_description():
 
     xacro_file = os.path.join(diff_drive_bot_pkg_path, 'description', 'robot.urdf.xacro')
     diff_drive_bot_rviz_config = os.path.join(diff_drive_bot_pkg_path, 'config', 'diff_drive_bot.rviz')
-    assignments_rviz_config = os.path.join(assignments_pkg_path, 'rviz', 'FP_rviz.rviz')
+    assignments_rviz_config = os.path.join(assignments_pkg_path, 'rviz', '09_pose_scan_world_plan.rviz')
 
     # Process the URDF file
     robot_description_config = xacro.process_file(xacro_file)
