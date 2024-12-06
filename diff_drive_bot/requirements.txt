@@ -1,0 +1,15 @@
+numpy
+libspatialindex
+matplotlib
+networkx
+rtree
+black
+control
+isort
+jupyter
+jupyterlab
+mypy
+myst-parser
+pandas
+pylint
+sphinx
